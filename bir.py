@@ -3,6 +3,59 @@ measuring pixel brightness 測量像素的亮度
 https://stackoverflow.com/questions/6442118/python-measuring-pixel-brightness
 Extracting and Saving Video Frames
 https://stackoverflow.com/questions/33311153/python-extracting-and-saving-video-frames
+
+Illuminance python
+
+https://github.com/MilesGordenker/Luxometer/blob/master/luxometer.py
+
+http://python-colormath.readthedocs.io/en/latest/color_appearance_models.html
+
+http://answers.opencv.org/question/24260/how-to-determine-an-image-with-strong-or-weak-illumination-in-opencv/
+
+http://scikit-image.org/docs/dev/api/skimage.color.html
+
+https://pypi.python.org/pypi/grapefruit/
+https://github.com/xav/Grapefruit/
+
+http://colour-science.org/
+
+http://tbleicher.github.io/wxfalsecolor/
+
+https://sourceforge.net/p/raspfm/code-0/1/tree/trunk/home/pi/Adafruit-Raspberry-Pi-Python-Code/Adafruit_TCS34725/Adafruit_TCS34725.py
+
+http://mri.ee.ntust.edu.tw/wp/?p=665
+
+樹莓派系列4——環境光照強度測量
+http://blog.csdn.net/weixiazailaide/article/details/52782458
+
+https://ccw1986.blogspot.tw/2017/05/opencv-tutorial.html
+
+https://packages.debian.org/zh-cn/jessie/python-grapefruit
+
+http://pillow.readthedocs.io/en/3.1.x/reference/Image.html
+
+http://python.jobbole.com/81593/
+
+https://yq.aliyun.com/articles/70768
+
+http://zqdevres.qiniucdn.com/data/20160322112041/index.html
+
+http://zhaoxuhui.top/blog/2017/06/28/%E5%9F%BA%E4%BA%8EPython%E7%9A%84OpenCV%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%8617.html
+
+http://blog.csdn.net/chenbang110/article/details/56011119
+
+
+https://www.youtube.com/watch?v=pHD9YfJaqeY
+
+Python Generators in Image Luminance Conversion and Binarization
+1) Relative Luminance Formula
+2) Conversion of RGB Images to Gray Level Images with Relative Luminance
+3) Global Binarization Gray Level Images
+4) Python Generator Factories
+5) Pixel Iteration with Python Generators
+6) Class Home Page is at http://vkedco.blogspot.com/2012/01/py...
+7) Video Narration: Vladimir Kulyukin
+
 '''
 #import Image
 from PIL import Image
