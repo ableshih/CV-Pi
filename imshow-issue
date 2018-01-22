@@ -1,0 +1,4 @@
+如果 cv2.imshow(name, img)
+在 for 迴圈
+cam 會無法顯示CPU也會高轉速
+ 
