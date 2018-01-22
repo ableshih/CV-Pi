@@ -1,0 +1,107 @@
+#include <Servo.h>
+
+int p_fltXYRadius[0];
+
+Servo servo;
+Servo servo1;
+int servoPosition = 90;
+int servoPosition1=90 ;
+
+int incomingByte = 0;   // for incoming serial data
+
+void setup()
+{
+  Serial.begin(9600); // // opens serial port, sets data rate to 9600 bps
+
+  servo.attach(9); // attaches the servo on pin 9 to the servo object
+  servo1.attach(10);// attaches the servo1 on pin 10 to the servo object
+  servo.write(servoPosition); // set the servo at the mid position
+  servo.write(servoPosition1);// set the servo1 at the mid position
+
+}
+
+void loop()
+{
+  if (Serial.available() > 0) {
+    // read the incoming byte:
+    incomingByte = Serial.read();
+
+    switch(incomingByte)
+    {
+      // Rotate camera left
+    case 'l':
+      servoPosition+=1;
+      delay(20);
+      if (servoPosition > 180)
+      {
+        servoPosition = 180;
+      }
+
+      break;
+
+      // Rotate camera right
+    case 'r': 
+      servoPosition-=1;
+      delay(20);
+      if (servoPosition < 0)
+      {
+        servoPosition = 0;
+      }
+
+      break;
+
+      // Center camera
+    case 'c':
+      servoPosition = 90;
+      delay(20);
+      break;
+      
+      // Camera in upward direction
+    case 'u':
+      servoPosition1+=5;
+      delay(100);
+      if (servoPosition1 > 160)
+      {
+        servoPosition1 = 160;
+      }
+
+      break;
+      
+      // Camera in downward direction
+    case 'd':
+      servoPosition1-=5;
+
+      if (servoPosition1 < 140)
+      {
+        servoPosition1 = 140;
+      }
+     
+      break;  
+      
+      // Camera would move upward if it finds an object moving up
+    case 'f':
+      servoPosition1+=1;
+      delay(100);
+      if (servoPosition1 > 180)
+      {
+        servoPosition1 = 180;
+      }
+
+      break;
+      
+      // Camera would move downward if it finds an object moving down
+    case 'e':
+      servoPosition1-=1;
+      delay(100);
+      if (servoPosition1 < 0)
+      {
+        servoPosition1 = 0;
+      }
+      
+      break;
+    }
+    servo.write(servoPosition);
+    servo1.write(servoPosition1);
+
+  }
+}

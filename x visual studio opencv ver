@@ -1,0 +1,19 @@
+
+
+https://vra.github.io/2015/04/22/opencv-vs-config/
+
+添加環境變量是為了讓程序在運行時能找到函數對應的動態鏈接庫（dll）。要注意的是，
+OpenCV對於32位程序和64位程序有不同的dll目錄，並且對於不同的版本的VS，也有不同的dll文件目錄。
+
+在build目錄下，x86下麵包含了32位程序所需的dll文件，x64目錄下麵包含了64位程序所需dll文件。
+在這個兩個目錄下，都有vc10, vc11, vc12三個文件夾，分別是針對vs2010, vs2012和vs2013。
+為了使32位程序和64位程序都能編寫通過，我一般將兩者目錄下的和VS版本對應的文件夾下的bin目錄都加入PATH變量中。
+所以在PATH環境變量中增加如下內容：
+
+https://charlottehong.blogspot.tw/2017/06/opencv-320-vc14-visual-studio-2017.html
+OpenCV 3.2.0 vc14 如何安裝在 Visual Studio 2017
+OpenCV 3.2.0 vc14
+Visual Studio 2017
+
+visual studio 2013，所以選擇vc12
+

@@ -1,0 +1,89 @@
+http://www.instructables.com/id/Who-Is-at-the-Coffee-Machine-Facial-Recognition-Us/
+
+$ sudo apt-get update
+
+$ sudo apt-get upgrade -y
+
+$ sudo reboot
+
+Note that the default password is "raspberry"
+
+Now go the "Menu" -> "Preferences" -> "Raspberry Pi Configuration" and go the "Interfaces" tab
+
+We need to enable:
+
+- Camera
+- SSH
+- I2C
+- SPI
+
+Get the source files
+
+Clone the project's repository:
+
+https://github.com/luisomoreau/sigfox_face_recogni...
+
+$ sudo git clone https://github.com/luisomoreau/sigfox_face_recogni...
+
+Step 3: Plug the LCD Display
+https://github.com/luisomoreau/sigfox_face_recognition
+https://github.com/luisomoreau/sigfox_face_recognition.git
+
+Installation
+
+I cloned the https://github.com/youngage/grove-lcd python libraries under the lcd/ folder in the project's files
+
+Run in the terminal:
+
+$ sudo apt-get install python-smbus
+
+$ sudo apt-get install i2c-tools
+
+Test
+
+To test if the LCD display works fine, go to the project's folder and run the lcd/backlight.py script:
+
+$ sudo python lcd/backlight.py
+
+The result should be like the following video:
+
+Install OpenCV
+
+We are going to use the OpenCV python libraries. At first, I tried to compile it myself but I couldn't really make it. I spent hours trying different tutorials but with no success.
+
+Finally, I found that OpenCV could be installed using apt-get. I read that few features are missing but at least it is enough for what we want to do!
+
+(https://www.raspberrypi.org/forums/viewtopic.php?f...)
+
+Open your terminal again and run:
+
+$ sudo apt-get install python-dev
+
+$ sudo apt-get install python-opencv
+
+$ sudo apt-get install libopencv-dev
+
+$ sudo pip install imutils
+
+$ sudo pip install numpy
+
+However, if you wish to compile it yourself, feel free to have a look at pyimage website: http://www.pyimagesearch.com/2015/02/23/install-op...
+
+It can be a bit long, though.
+
+Test the installation
+
+In your terminal run:
+
+pi@raspberrypi:~ $ python
+Python 2.7.9 (default, Mar 8 2015, 00:52:26) [GCC 4.9.2] on linux2 Type "help", "copyright", "credits" or "license" for more information.
+
+>>> import cv2
+
+>>>
+
+If you don't see any errors, OpenCV has been installed correctly.
+
+Now press ctrl + d to exit
+
+http://www.pyimagesearch.com/2015/02/23/install-opencv-and-python-on-your-raspberry-pi-2-and-b/

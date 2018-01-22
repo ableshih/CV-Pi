@@ -1,0 +1,24 @@
+http://www.instructables.com/id/RasPi-OpenCV-Face-Tracking/
+
+
+Step 3: First Time Setup
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo reboot
+Step 4: (Optional) Connect to Raspberry Pi Over Local Internet
+sudo apt-get install ssh
+sudo /etc/init.d/ssh start
+sudo update-rc.d ssh defaults
+sudo reboot
+sudo shutdown -h now
+
+Step 5: Install OpenCv and Required Libraries
+sudo apt-get install python-pygame python-scipy python-numpy
+sudo apt-get install python-pip
+
+sudo pip install --upgrade pip
+
+sudo pip install virtualenvwrapper
+
+vi ~/.bashrc
+

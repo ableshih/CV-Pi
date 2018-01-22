@@ -1,0 +1,9 @@
+resize Partition
+
+用 GParted
+直接拖拉
+在按 Resize
+在選 Edit -> Apply All Operations
+按 Apply
+
+reboot 

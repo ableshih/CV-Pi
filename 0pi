@@ -1,0 +1,400 @@
+
+https://www.instructables.com/id/RPi-MacroScope/
+pi 的相機 CSI 
+
+1. 硬體接上
+2. 系統設定 在 menu -> preference -> configuration -> interface
+3. 抓圖指令 raspistill -o 檔名.jpg
+   預設目錄 /home/pi (pi 使用者名稱)
+
+
+-hf 左右
+-vf 上下
+-w 1024 -h 768
+-t (2000就是兩秒 預設是五秒 不可為0)
+
+
+https://makerpro.cc/2017/12/raspberry-pi-mini-open-source-camera-openqcam/
+Home»Raspberry Pi»【Tutorial】
+OpenQCam 樹莓派迷你開源相機
+Posted on 十二月 21, 2017 作者：Jack Hsu
+
+多年來，從網路上找到許多幫助我完成工作的參考資料或是程式片段，但自己卻從未貢獻過，在討論區回覆都沒有，
+實在有點不好意思。這是我的第一個開源專案，與其說是開源，不如說是我把網路上找到的一堆可用破碎片段，
+重新整理好並實做出來。此次選擇用中文撰寫，是為了方便大家閱讀，因為網路上許多有用的內容多半用英文。
+未來或許會再加寫英文版本提供更多網友使用，若有網友願意協助翻譯成各國文，亦歡迎連結推廣。
+
+前言
+本專案利用樹莓派 Pi Zero W、500 萬素相機模組、2.2 吋 SPI 介面 QVGA （320*240 像素）解析度 TFT LCD、OpenCV （C++版本），
+完成一台迷你可愛版數位相機【OpenQCam】，有兩個按鍵及兩個 LED，可按鈕拍照、儲存並同步顯示在 TFT LCD 上。
+做為後續開發更進階的小型嵌入式智慧型攝影機、電腦（機器）視覺、 人工智慧影像分析應用的軟硬體前置環境建立，
+大家可依此架構再擴展成自己想要的功能。
+
+
+開源迷你相機 OpenQCam 成品圖（圖片來源：Jack Hsu提供）
+
+一、硬體需求：
+在執行本專案前，先要備妥下列元件：
+
+1. 樹莓派 Pi Zero W 一片 （使用 Pi 1, 2 ,3, Zero 皆可，只是有些設定方式不同， 後面會補充說明）
+2. 樹莓派 Pi Zero 專用 500 萬畫素相機 （其它解析度相機亦可，請注意非 Pi Zero 使用者必須使用 Pi 對應版本的相機）
+3. 16GB 記憶卡一張 （一般買樹莓派 餐附的都是 8GB 記憶卡，要跑 OpenCV 建 議要升級）
+4. SPI 介面 2.2 吋 TFT LCD（QVGA 320*240） 一片 （一般市購 2~3.5 吋 TFT LCD 多半 是用 ILI9341 驅動，若非該驅動 IC 則需另外撰寫驅動程式。
+   另外此類模組常 會自帶記憶卡或觸控模組，本專案暫未使用。）
+5. 雙面洞洞板 一片 （若不想自己焊板子，可直接用麵包板插線完成，只是不方 便拿在手上把玩）
+6. 90 度按鍵 兩個 （做為操作用按鍵，或當外部觸發拍照，數量可自行增減）
+7. 紅色、綠色 LED 各一個 （顏色不拘，可當成閃光燈控制或指示燈用）
+8. 10k 及 220 歐姆 1/4W 電阻 各二個 （提供按鍵及 LED 使用）
+9. 40 （20 pin 雙排）pin 2.54 mm 間距公、母排針 各一組 （連接樹莓派和洞洞板用）
+10. 20 （pin 單排）pin 2.54 mm 間距公、母排針 各一組 （拆成 9pin 和 4 pin，分別提供 LCD 模組上顯示用及記憶卡用）
+11. 5V變壓器及Micro USB連接線一組（負責供電給Pi Zero，若使用電腦USB或行動電源供電亦可）
+12. HDMI 顯示幕及 Mini HDMI 轉大頭 HDMI 連接線 一組 （一開始設定 Pi Zero 使用，之後就完全用不到，可拿有 HDMI 功能的電視充當一下）
+13. 無線鍵盤滑鼠及 USB OTG 連接線 一組 （一開始設定 Pi Zero 使用，之後使用遠端連線操作就用不到，亦可直接借用一下家中電腦的無線鍵鼠）
+14. 可選購Pi Zero CPU專用散熱片一組（除非長時間CPU滿載情況造成熱當，原則不一定要裝）
+
+其中第 1、2、 3、 4、12、13 項可自行到露天拍賣或淘寶上採購，其餘的材料可自行到電子零件商場或網路上採購。
+一般上網購買樹莓派 Pi Zero 餐（建議主板、相機及排線一起買，外殼依需求搭配)時會附4GB或8GB記憶卡（記得要換購成16GB）、
+5V 變壓器、Micro USB 充電線、USB OTG 連接線及 Mini HDMI 轉大頭 HDMI 連接線， 有些還會附 CPU 散熱片。
+根據不同採購管道及配大致上總體成本（不含第 12、13 項）約在 2000 ~ 3000 台幣左右。
+
+
+
+
+另外，本專案對於新手而言，線路部分算有點小複雜，在製作或除錯過程中，難免會遇到電氣信號不良或信號被干擾等問題產生。
+一般家裡可能沒有高性能的儀表（如示波器、邏輯分析儀）可協助分析問題，但建議至少需要有一部數位三用電錶。另外，
+可考慮選配（原則上用不到）一台簡易型低速邏輯分析儀（不到台幣 500 元）來協助。這台僅適合分析 2 MHz 以下信號，
+但對於重寫 LCD SPI 驅動程式、抓問題來說已非常足夠。
+
+
+
+
+
+二、硬體線路圖
+本專案的線路基本上不難，如下圖左邊線路圖所示。主要是連接樹莓派Pi Zero GPIO到 LCD 模組、按鍵及 LED。
+另外，留有一組接頭和 LCD 模組信號線並聯，方便與邏輯分析儀連接，分析問題用。原則上可不必接，但為方便工作，
+可選擇自行以雙面洞板自行焊接，接線方式如下圖右邊線路圖所示。
+
+藍色為實際焊在板上的裸銅線， 紅色線為跳線（有膠皮絕緣線），請注意勿和其它線短路，以免電路無法正常工作。 
+若要全部用 OK 線（有膠皮鍍銀線）焊接亦可。實在不熟悉焊接工作，可使用杜邦端子線連接或用麵包板依電路圖連線亦可，
+只是無法像一台相機拿在手上操作。
+
+電路上的SW1 & SW2可直接按鍵操作或者以外部觸發(Strob)信號連接亦可，但請注意系統目前以3.3V為主要控制電源。
+因此，當外部觸發信號GPIO 21（SW1）或 GPIO 26（SW2)）提供 3.3V 時，相當於按鍵被按下。另外， 
+LED 1 & 2 可做為指示信號燈或推動閃光燈，不過由樹莓派 GPIO 的輸出電流很小（10~20mA），
+要推動大電流的燈具時，要額外接電晶體來放大驅動電流，避免把 GPIO 埠燒壞。
+
+
+開源迷你相機 OpenQCam 電路圖(左)及手焊轉接板圖(右)（圖片來源：Jack Hsu提供）
+
+三、作業系統安裝
+一般如果上網買樹莓派 Pi Zero W 餐時，通常會附一片 4GB 或 8GB SD 卡，裡面已安裝好原廠作業系統，開機就能使用。
+為了後續系統擴充及安裝更新版本的 OpenCV，強烈建議一開始就先換成 16GB 記憶卡，避免從 8GB 記憶卡搬到 16GB 時，
+產生許多設定工作。首先，到樹莓派官網下載視窗版環境最新版本的作業系統 Raspbian Stretch with DESKTOP 的 ZIP 檔，
+https://www.raspberrypi.org/downloads/raspbian/
+解壓縮後會得到作業系統影像檔 （Image File）2017-11-29-raspbian-stretch.img。
+
+
+樹莓派官網下載畫面（圖片來源：Jack Hsu提供）
+
+接著，利用Win32 Disk Imager將影像檔（Image File）燒寫到記憶卡中。 第一步先選擇要燒寫的檔案路徑及名稱；
+再來，選擇要寫入的記憶卡磁碟機代號；最後按下【Write】就開始燒錄工作，此過程大約要半小時左右。
+如果記憶卡沒有燒錄工具可以到Win32 Disk Imager進行下載。
+https://sourceforge.net/projects/win32diskimager/
+
+
+燒錄影像檔步驟（圖片來源：Jack Hsu提供）
+
+記憶卡燒錄完成後，放入 Pi Zero W 記憶卡槽就可準備送電啟動。
+
+第一次送電前注意事項
+1. 以HDMI連接線連接PiZeroW和HDMI螢幕（可用有HDMI功能的電視取代），第一次啟動無法以遠端（無螢幕）方式進入。
+2. 先不要將無線鍵盤滑鼠的接收器插入USBOTG插孔中，啟動後會進不了作業系統，導致反覆的重新開機，估計是啟動電流過大造成，等到進到桌面環境後再插入。
+3. 接著就可送電，樹莓派PiZeroW板子上有兩個MicroUSB孔，靠外側那個是+5V 電源。原則上， Pi Zero W 非常省電，一般 5V 1A 的變壓器就足夠所需電力，
+   一般電腦的USB 2.0插孔（500mA）也能推動。靠板子中間那個是USB OTG，切記不要搞錯，以免後續外接 USB 裝置無法工作。
+
+強烈建議使用樹莓派Pi Zero W，有支援無線網路功能，後續就可直接遠端連線操作，不必再連接螢幕及無線鍵盤滑鼠。進入視窗作業環境桌面後，
+點選右上角網路符號，啟動無線網路（WIFI ON），連線到自家的無線網路，輸入帳號密碼。為確保無線網路工作正常，可點選畫面左上方地球圖案， 
+啟動瀏覽器進行測試，可試隨便連到任意一個網址（如 GOOGLE）看看是否正常。接著，將滑鼠移到畫面右上角無線符號處，
+此時會出現目前 WIFI 動態配置 的 IP 位置（192.168.xxx.xxx），先記下來，等下會要用到。
+
+系統預設是英文介面，其中有許多系統參數設定不符需求，加上特殊介面也未開啟。因此，先點選畫面左上角樹莓圖案進入主選單（/Preference/Raspberry Pi Configuration）。
+進入後共有四個子頁面，樹莓派原廠預設使用者名稱：pi ，密碼為：raspberry，會自動登入（Auto Login）。
+
+若不喜歡預設值，可於 System 頁面下修改。後續要遠端登入操作，所以螢幕解析度可依自己需求，按下［Resolution］鍵進行修改。
+再來，切到 Interfaces 頁面，將預設全改為Disable，為了讓專案能順利完成，必須將Camera、VNC及SPI致能（Enable)）起來。
+而 Performance 頁面預設撥給 GPU 128MB，這個部份可暫時不動。最後，切到 Localisation 頁面，設定參數
+
+參數設定
+1. 按下［Set Local］鍵，將 Language 設為 Zh （Chinese）或 lzh （Literay Chinese）；Country 設為 TW（Taiwan）；Character Set 設為 UTF-8。
+2. 按下［SetTimeZone］鍵，將Area設為Asia，Location設為Taipei。
+3. 按下［Keyboard］鍵，系統預設為英國鍵盤，這會導致有些符號打不出來（如@）。因此，選擇左邊 United States，選擇右邊 English（US），鍵盤才能正常工作。
+4. 按下［Set WiFi Country］，將設定改為TW （Taiwan），如此系統時間才會和網路同步。
+
+
+最後按下［OK］鍵，系統會詢問是否重新開機（Reboot），選擇 YES 後，馬上拔掉 USB OTG 上的接收器，讓系統重新啟動。接下來只須利用 VNC 軟體遠端連線操作即可。
+
+
+樹莓派系統參數設定（圖片來源：Jack Hsu提供）
+
+根據實測，強烈建議不要直接用 apt-get 安裝 tightvncserver 到樹莓派上，有部份 軟體（如 QT）在遠端連線時會造成鍵盤無法正確輸入文 問題，
+建議依上一步驟說 明將系統參數 VNC 設定為 Enable 即可。接下來要在桌機或筆電上安裝 RealVNC 才能遠端操控 Pi Zero W ，相關軟體可至RealVNC網站下載。
+啟動 RealVNC 後，輸入剛才記下的 IP（192.168.xxx.xxx），帳號:pi  密碼 raspberry，即可遠端登入，進行 所有操作。如果有習慣常的 VNC 軟體亦可。
+
+四、工作環境建置
+接下來可依需求安裝相關軟體，大部份安裝都在命令模式下進行，點擊畫面上左 上方，黑色[ >_ ]的圖案，就會開啟一黑色視窗，進入命令（CMD）模式。
+請注意大部份的命令英文母大小寫是被認為不同文 ，所以不要打錯。
+
+4.1  更新系統
+雖然樹莓派的作業系統可能已是最新的，但其它依賴包(函式庫)就不一定， 因此首先要更新樹莓派，輸入以下指令。
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo rpi-update （更新樹莓派韌體，可忽略）
+sudo reboot （重新開機）
+
+4.2  測試相機
+輸入下列指令，測試相機是否可正常拍照，執行後應會在同一目錄下產生test.jpg 的影像檔。若無法取像，則需檢查相機的軟排線是否正確的插在連接 座上沒有鬆脫。
+
+raspistill -o test.jpg
+
+4.3  安裝中文輸入法 （選配，可不裝）
+這裡推薦 SCIM，因為它支援的輸入法包括兩岸三地常見中文輸入法。當然 如你有習慣的其它輸入法亦可安裝。
+
+sudo apt-get install scim scim-tables-zh scim-chewing
+
+4.4  安裝影音播放軟體 (本專案用不到，但建議安裝)
+由於之後可能會透過攝像頭錄製影片，為方便觀看影片建議可安裝 名開源 影音播放軟體 VLC。
+
+sudo apt-get install vlc
+
+4.5  安裝 OpenCV 及編譯程式必要依賴包
+OpenCV 是網路上最多人使用的開源電腦視覺、影像處理工具，功能與時俱進，內容包山包海，連最新的深度學習都有，目前（Dec. 2017）已到了 3.3 版， 
+想多了解一下可參閱官網。為了方便大家工作，建議大家直接用編譯好的 OpenCV 2.4.9 版就非常夠用了，安裝後包含 C, C++及 Python 都可使用。
+若各 位想使用最新版本可自行編譯，請參考這裡有完整說明，不過整個過程會超過十二 小時，甚至會發生花了二十四小時以上，還在編譯的情況。
+為加快各位上線時間請依序執行下面指令安裝 OpenCV 2.4.9 版即可，安裝時間頗長，請多一些耐性。
+
+sudo apt-get -y install build-essential cmake cmake-curses-gui pkg-config
+sudo apt-get -y install libgtkglext1-dev
+sudo apt-get -y install libv4l-dev v4l-utils
+sudo apt-get -y install libopencv-dev python-opencv
+
+4.6 安裝樹莓派 GPIO 及介面驅動庫
+一般驅動樹莓派的GPIO（包括SPI, I2C, PWM…）有很多方式，網路上提供很多免費工具包可驅動，亦可直接對位置寫入，由於本專案是用 C++語言 完成，
+所以推薦採用BCM2835（樹莓派Pi Zero W的主晶片名稱為BCM2835）件包來驅動即可，可免去很多設定及變數使用問題。更進一步資訊可參考官網，
+目前（Dec. 2017）最新版本為 1.52。請依以下步驟下載、解壓及安裝。另外，要注意的一點，這裡用的 40pin GPIO，
+所以用程式控制時要選用 RPI_V2_GPIO_P1_X （X 表示第幾 腳，而非 GPIO 編號）。
+
+wget http://www.airspayce.com/mikem/bcm2835/bcm2835-1.52.tar.gz
+tar zxvf bcm2835-1.52.tar.gz
+cd bcm2835-1.52
+./configure
+make
+sudo make check
+sudo make install
+
+為使一開機相機就能啟用且可讓 OpenCV 直接驅動相機不必透過其它工具， 所以要修改系統檔案，其步驟如下：
+
+cd /etc/modules-load.d/
+sudo nano modules.conf （這裡使用內建文字編輯器 nano 進行編輯，亦可用其 它文字編輯器）
+
+進入後在最後一行按下 ENTER，新增一空白行，加入bcm2835-v4l2。按下[Ctrl + W](兩鍵同時按)存檔，再按[Ctrl + X]離開，完成編輯工作，
+再輸入reboot 重新開機完成所有系統環境設定。
+
+4.7 系統備份 （選配，可自由決定）
+作到這裡已大致完成系統環境建置，建議可再利用Win32 Disk Imager將系統備份。首先將 Pi Zero W 關機，抽出目前已正常工作的記憶卡，
+放入桌機或筆記型電腦記憶卡槽，啟動 Win32 Disk Imager，指定存檔之路徑及檔名， 選擇欲備份的記憶卡磁碟機代號，按下[Read]，耐心等待進度條到 100%，就完成備份。
+
+五、開源迷你相機 OpenQCam 系統開發
+
+接下來要開始說明如何進行程式開發。本專案是採 C++語言，原則上只須文字編輯器（可用內建 nano 或其它習慣編輯器）即可，
+不需視窗也不需要 IDE 環境就可獨立完成。若不習慣傳統文字編輯器的人，亦可在視窗環境點選檔名，按滑鼠右鍵，
+啟用 Text Editor（類似 Windows 上的工具軟體-［筆記本］），即可進行編輯。 另外，在Linux上知名的視窗開發整合環境軟體QT，
+經測試在Pi Zero W上執行非常卡，且和 OpenCV 有些許不相容，若想使用其它 IDE 亦可。
+
+本專案目前僅支援 TFT LCD 320*240 像素（一般正常是直式顯示，目前預設用程式 轉成橫式顯示），ILI9341 驅動 IC 之 SPI 介面，
+此類 LCD 在網路上為主流產品很容 易買到。程式中有提供顯示直式介面的函式，可自行修改。有其它顯示規格需求請上網查閱驅動 IC 資料手冊自行修改，
+但請注意改錯參數有可能造成 LCD 損壞。
+
+工作前，建議先建立一個 Project 目錄，再將本專案所有檔案下載該目錄下。接著，執行本專案已預建編譯指令批次檔 go.sh 進行編譯，
+等待約 30 秒後即可完成， 產生執行檔 camera，由於 BCM2835 須要較高權限，所以執行時要加上 sudo， 完整操作如下所示。
+
+sudo ./go.sh (編譯程式)
+sudo ./camera (執行程式)
+
+執行後，攝像頭會自動取像並降低影像解析度，從五百萬像素降至QVGA （320* 240 像素），LCD 上會同步顯示取像內容，
+在 LCD 左上角會顯示目前速度（取像加 顯示），單位是 FPS（每秒幀數），正常狀況約有 15 ~ 18 FPS。當按下 SW1 時紅燈會 亮，
+模擬快門按下後閃光燈會亮，畫面涷結 1 秒並自動存檔。按下 SW2 時綠燈會亮，並結束程式。
+
+本專案是做為後續利用 OpenCV 進行影像辨識的很好入門平台，程式的相關註解詳見各程式原始碼。受限於個人能力有限，
+撰文上難免產生誤解或疏漏，如有任何問題歡迎留言或來信指教！
+
+參考資料
+樹莓派基金會 https://www.raspberrypi.org
+
+記憶卡備份Win32 Disk Imager https://sourceforge.net/projects/win32diskimager/
+
+遠端操控 RealVNC https://www.realvnc.com/en/
+
+電腦視覺 OpenCV  https://opencv.org
+
+介面控制 BCM2835  http://www.airspayce.com
+
+LCD驅動IC資料手冊 https://cdn-shop.adafruit.com/datasheets/ILI9341.pdf
+
+（本文同步發表於歐尼克斯實境互動工作室（OmniXRI），文章連結；責任編輯：葉于甄。）
+
+
+sudo apt-get update
+sudo apt-get install build-essential
+sudo apt-get install libavformat-dev
+sudo apt-get install libcv2.4 libcvaux2.4 libhighgui2.4
+sudo apt-get install python-opencv
+sudo apt-get install opencv-doc
+
+$ python
+>>> import cv2
+無任何錯誤表示安裝成功 要在 python 2.7.13 下
+
+
+$ wget -O opencv-3.2.0.zip  https://sourceforge.net/projects/opencvlibrary/files/opencv-unix/3.2.0/opencv-3.2.0.zip/download
+$ unzip opencv-3.2.0.zip
+$ cd opencv-3.2.0
+
+$ wget https://bootstrap.pypa.io/get-pip.py
+$ sudo python get-pip.py
+
+$ sudo pip install virtualenv virtualenvwrapper
+$ sudo rm -rf ~/.cache/pip
+
+http://storychen.blogspot.tw/2016/06/raspberry-pi-3-opencv.html
+
+http://atceiling.blogspot.tw/2017/02/raspberry-pi-opencv.html
+
+
+
+https://dotblogs.com.tw/coding4fun/2017/11/09/125723
+
+
+
+=============================
+https://dotblogs.com.tw/coding4fun/2017/11/09/110723
+
+樹莓派安裝 OpenCV
+
+安裝相關涵式庫
+
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install build-essential cmake pkg-config
+sudo apt-get install libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev
+sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
+sudo apt-get install libxvidcore-dev libx264-dev
+sudo apt-get install libgtk2.0-dev libgtk-3-dev
+sudo apt-get install libcanberra-gtk*
+sudo apt-get install libatlas-base-dev gfortran
+sudo apt-get install python2.7-dev python3-dev
+
+下載OpenCV原始碼 (目前版本)
+
+cd ~
+wget -O opencv.zip https://github.com/Itseez/opencv/archive/3.3.1.zip
+unzip opencv.zip
+wget -O opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/3.3.1.zip
+unzip opencv_contrib.zip
+
+建立Python虛擬環境
+
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python get-pip.py
+sudo python3 get-pip.py
+sudo pip install virtualenv virtualenvwrapper
+sudo rm -rf ~/.cache/pip
+
+#修改設定檔
+nano ~/.profile
+
+#底下加入
+# virtualenv and virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
+Ctrl o
+Ctrl x
+
+#重新載入設定檔
+source ~/.profile
+
+#建立虛擬環境 (python3+CV3.3.1)
+mkvirtualenv py3cv331 -p python3
+
+#也可以(python2+CV3.3.1)
+mkvirtualenv py2cv331 -p python2
+#進入虛擬環境
+source ~/.profile
+workon py2cv331
+
+#安裝NumPy套件
+pip install numpy
+
+編譯及安裝OpenCV
+
+cd ~/opencv-3.3.1/
+mkdir build
+cd build
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+    -D CMAKE_INSTALL_PREFIX=/usr/local \
+    -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib-3.3.1/modules \
+    -D ENABLE_NEON=ON \
+    -D ENABLE_VFPV3=ON \
+    -D BUILD_TESTS=OFF \
+    -D INSTALL_PYTHON_EXAMPLES=OFF \
+    -D BUILD_EXAMPLES=OFF ..
+
+make
+sudo make install
+sudo ldconfig
+
+連結設定
+
+#連結設定 (for Python 3)
+cd /usr/local/lib/python3.5/site-packages/
+sudo mv cv2.cpython-35m-arm-linux-gnueabihf.so cv2.so
+cd ~/.virtualenvs/py3cv331/lib/python3.5/site-packages/
+ln -s /usr/local/lib/python3.5/site-packages/cv2.so cv2.so
+
+#連結設定 (for Python 2)
+cd ~/.virtualenvs/py2cv331/lib/python2.7/site-packages/
+ln -s /usr/local/lib/python2.7/site-packages/cv2.so cv2.so
+
+#測試是否安裝成功
+$ source ~/.profile
+$ workon py2cv331
+$ python
+>>> import cv2
+>>> cv2.__version__
+'3.3.1'
+>>>
+
+
+備註
+
+sudo apt-get install libcanberra-gtk*
+#或是
+nano .bashrc
+#加入
+export NO_AT_BRIDGE=1
+
+#可以修正以下錯誤
+* (Original:10126): WARNING **: Error retrieving accessibility bus address:
+ org.freedesktop.DBus.Error.ServiceUnknown: The name 
+ org.a11y.Bus was not provided by any .service files
+
+
+參考
+
+https://www.pyimagesearch.com/2017/09/04/raspbian-stretch-install-opencv-3-python-on-your-raspberry-pi
+
+
+
+
+
+

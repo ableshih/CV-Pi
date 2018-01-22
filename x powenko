@@ -1,0 +1,29 @@
+$sudo apt-get install build-essential cmake cmake-curses-gui pkg-config libpng12-0 libpng12-dev libpng++-dev libpng3 libpnglite-dev zlib1g-dbg zlib1g zlib1g-dev pngtools libtiff5-dev libtiff4 libtiffxx0c2 libtiff-tools libeigen3-dev
+
+ 
+
+$mkdir ~/Desktop/opencv2
+
+$ cd ~/Desktop/opencv2
+
+$wget https://github.com/Itseez/opencv/archive/2.4.13.zip
+
+$unzip 2.4.13.zip
+
+$cd opencv-2.4.13
+$mkdir release
+$cd release
+$ ccmake ../
+
+$ make -j4
+
+$ sudo make install
+
+$ make  -j4
+
+$ sudo make install
+
+$ sudo ldconfig
+
+$ pkg-config –modversion opencv
+
