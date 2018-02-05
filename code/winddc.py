@@ -1,3 +1,9 @@
+# https://gist.github.com/ThiefMaster/7063105
+# https://msdn.microsoft.com/en-us/library/windows/desktop/dd692979(v=vs.85).aspx
+# https://msdn.microsoft.com/en-us/library/windows/desktop/dd692982(v=vs.85).aspx
+# http://docs.activestate.com/activepython/2.6/pywin32/win32api__EnumDisplayMonitors_meth.html
+# http://nullege.com/codes/search/win32api.EnumDisplayMonitors
+
 from ctypes import windll, byref, Structure, WinError, POINTER, WINFUNCTYPE
 from ctypes.wintypes import BOOL, HMONITOR, HDC, RECT, LPARAM, DWORD, BYTE, WCHAR, HANDLE
 import sys
