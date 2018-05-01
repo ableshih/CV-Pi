@@ -1,5 +1,6 @@
 Gerrit 系統的搭建
 
+https://blog.csdn.net/deyili/article/details/79422500
 http://www.cnblogs.com/kevingrace/p/5624122.html
 
 一、安裝Apache
