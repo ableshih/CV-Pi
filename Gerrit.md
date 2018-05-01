@@ -1,5 +1,7 @@
 Gerrit 系統的搭建
 
+http://www.cnblogs.com/kevingrace/p/5624122.html
+
 一、安裝Apache
 
 下載Apache:
