@@ -1,7 +1,32 @@
 Gerrit 系統的搭建
 
+authentication method ldap gerrit windows
+
 https://blog.csdn.net/deyili/article/details/79422500
+
+http://www.itread01.com/content/1508838031.html
+
 http://www.cnblogs.com/kevingrace/p/5624122.html
+
+http://www.itread01.com/articles/1476185404.html
+
+https://hk.saowen.com/a/3516dfac3dc2d69cd3f7920640a0d049605c0a7717d10f9877008dae4c82dc21
+
+https://www.dayexie.com/detail429094.html
+
+https://www.gaott.info/install-gerrit-ldap-gitweb-mysql-on-centos-7/
+
+https://blog.csdn.net/wulinxiangzhu/article/details/77743786
+
+https://blog.csdn.net/wulinxiangzhu/article/details/77742758
+
+https://blog.csdn.net/mr_raptor/article/details/77337710
+
+http://stackoverflow.org.cn/front/ask/view?ask_id=492073
+
+http://www.worldhello.net/gotgit/05-git-server/055-gerrit.html
+
+
 
 一、安裝Apache
 
