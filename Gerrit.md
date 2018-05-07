@@ -1,5 +1,39 @@
 Gerrit 系統的搭建
 
+https://blog.csdn.net/zyaiwmy/article/details/54617544
+https://blog.csdn.net/u013686019/article/details/54382231
+
+https://blog.csdn.net/hudashi/article/details/54668359
+
+https://blog.csdn.net/melody157398/article/details/39894975
+
+https://blog.csdn.net/wangjicong_215/article/details/77800082
+https://blog.csdn.net/u012769691/article/details/50214825
+
+https://blog.csdn.net/tq08g2z/article/details/78627653
+
+https://gerrit-review.googlesource.com/Documentation/config-gerrit.html
+
+https://www.packtpub.com/mapt/book/application_development/9781783289479/3/ch03lvl1sec24/active-directory
+
+http://chuquan.me/2017/12/12/ubuntu-gerrit-apache/
+
+https://blog.csdn.net/Leo_ZN_0/article/details/79532827
+
+https://blog.csdn.net/Coder80/article/details/48176559
+
+https://www.wolfcstech.com/2017/11/24/gerrit_codereview/
+
+https://blog.csdn.net/alittleyatou/article/details/52485259
+
+https://stackoverflow.com/questions/10447520/gerrit-and-active-directory
+
+
+
+https://books.google.com.tw/books?id=D_GqyR27Jw4C&pg=PT91&lpg=PT91&dq=gerrit+code+review+Active+Directory&source=bl&ots=tso6diBqa2&sig=SqhWc42YsXFIGts5NB9roDoWHyo&hl=zh-TW&sa=X&ved=0ahUKEwiKvfSdrPDaAhWFmJQKHfD7BFcQ6AEIcTAH#v=onepage&q=gerrit%20code%20review%20Active%20Directory&f=false
+
+---------------------
+
 authentication method ldap gerrit windows
 
 https://blog.csdn.net/deyili/article/details/79422500
