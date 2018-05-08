@@ -1,5 +1,11 @@
 Gerrit 系統的搭建
 
+http://mqjing.blogspot.tw/2016/09/gerrit-code-review-server.html
+
+https://blog.miniasp.com/post/2008/03/02/Open-relay-for-localhost-when-using-IIS-SMTP-Service-at-the-first-time.aspx
+
+
+
 https://blog.csdn.net/zyaiwmy/article/details/54617544
 https://blog.csdn.net/u013686019/article/details/54382231
 
