@@ -28,6 +28,7 @@ jre-8u171-windows-x64.exe
 add path
 
 test java
+------
 cmd
 ```a
 java -version 
