@@ -29,9 +29,13 @@ add path
 
 test java
 cmd
-'''a
+```a
 java -version //a
-'''
+```
+
+```Java
+public static void main(String[]args){} //Java
+```
 -----------------------------------
 
 2. apache
