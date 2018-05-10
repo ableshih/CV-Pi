@@ -29,7 +29,7 @@ add path
 
 test java
 cmd
-java -version
+'''java -version
 -----------------------------------
 
 2. apache
