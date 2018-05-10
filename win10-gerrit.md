@@ -38,10 +38,14 @@ java -version
 -----------------------------------
 
 2. apache
+----
 download
 https://httpd.apache.org/docs/current/platform/windows.html#down
+
 https://www.apachehaus.com/cgi-bin/download.plx
+
 http://www.apachehaus.com/downloads/httpd-2.4.33-o102o-x64-vc14-r2.zip
+
 httpd-2.4.33-o102o-x64-vc14-r2.zip
 
 add web folder
@@ -50,9 +54,12 @@ unzip to web folder
 -----------------------------------
 
 3. gerrit
+----
 download
 https://www.gerritcodereview.com/
+
 https://www.gerritcodereview.com/download/
+
 gerrit-2.15.1.war
 
 rename gerrit-2.15.1.war gerrit.war
@@ -61,7 +68,7 @@ copy to web folder
 
 -----------------------------------
 PATH
-
+----
 D:\ddgit\Apache24\bin
 C:\Program Files\Java\jdk-10.0.1\bin
 
