@@ -29,7 +29,9 @@ add path
 
 test java
 cmd
-'''java -version
+```
+java -version
+```
 -----------------------------------
 
 #### 2. apache
@@ -56,7 +58,7 @@ copy to web folder
 
 -----------------------------------
 #### PATH
-
+```
 D:\ddgit\Apache24\bin
 C:\Program Files\Java\jdk-10.0.1\bin
 
@@ -64,7 +66,7 @@ C:\Program Files\Java\jdk-10.0.1\bin
 D:\>path
 PATH=D:\ddgit\Apache24\bin;C:\Python27\;C:\Python27\Scripts;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\bin;C:\Program Files\Git\usr\bin;C:\Program Files\TortoiseGit\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk-10.0.1\bin;C:\Program Files\PuTTY\;C:\Users\9709732\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\9709732\AppData\Local\Programs\Python\Python36-32\;C:\Users\9709732\AppData\Local\Microsoft\WindowsApps;C:\ProgramData\chocolatey\lib\msys2;C:\tools\msys64
 
-
+```
 
 
 
@@ -75,7 +77,7 @@ PATH=D:\ddgit\Apache24\bin;C:\Python27\;C:\Python27\Scripts;C:\Program Files (x8
 -------------------------------------------
 #### gerrit install
 
-
+```
 Windows PowerShell
 著作權 (C) 2016 Microsoft Corporation. 著作權所有，並保留一切權利。
 
@@ -182,11 +184,11 @@ Enable any experimental features [y/N]?
 Initialized D:\ddgit\Gerrit
 PS D:\ddgit\Gerrit>
 
-
+```
 
 -----------------------------------
 #### gerrit 設定檔
-
+```
 [gerrit]
 	basePath = git
 	serverId = 9745273f-59fe-4cb8-8d96-449a6bd9d798
@@ -214,25 +216,27 @@ PS D:\ddgit\Gerrit>
 [cache]
 	directory = cache
 
-
+```
 -----------------------------------
 #### 加到開機後自動啟用 服務
-
+```
 PS D:\ddgit\Gerrit> prunsrv.exe //IS//Gerrit --DisplayName="Gerrit Code Review" --Startup=auto --Jvm="C:\Program Files (
 x86)\Java\jre1.8.0_171\bin\client\jvm.dll" --Classpath=D:\ddgit\GERRIT\bin\gerrit.war --LogPath=D:\ddgit\GERRIT\logs --S
 tartPath=D:\ddgit\GERRIT --StartMode=jvm --StopMode=jvm --StartClass=com.google.gerrit.launcher.GerritLauncher --StartMe
 thod=daemonStart --StopClass=com.google.gerrit.launcher.GerritLauncher --StopMethod=daemonStop
 
-
+```
 -----------------------------------
 #### prunsrv 用法
+```
 PS D:\ddgit\Gerrit> prunsrv.exe //DS//Gerrit 
 
 IS install
 DS del
+```
 -----------------------------------
 #### gerrit 用法
-
+```
 install
 java -jar .\gerrit-2.15.1.war init
 
@@ -243,12 +247,12 @@ java -jar .\bin\gerrit.war daemon --console-log
 
 ctrl + c (exit)
 
-
+```
 -----------------------------------
 
 #### apache 設定檔 
 
-
+```
 
 #
 # This is the main Apache HTTP server configuration file.  It contains the
@@ -852,6 +856,8 @@ SSLRandomSeed connect builtin
   ProxyPassReverse / http://ddgit.wistron.com:8099/
 </VirtualHost>
 
+```
+
 -----------------------------------
 
 #### Eform
@@ -949,7 +955,7 @@ Git Gerrit Code Review server (source code 簽核系統)
 
 -----------------------------------
 #### 虛擬網站
-
+```
 port folder
 http://pclevin.blogspot.tw/2016/03/apache-httpd-virtualhost.html
 
@@ -981,13 +987,14 @@ http://pclevin.blogspot.tw/2016/03/apache-httpd-virtualhost.html
   Require all granted
  </Directory>
  
+ ```
 -----------------------------------
 
 
 
 
 
-
+```
 
 Apache - VirtualHost 架設虛擬網站
 分享: facebook PLURK twitter  
@@ -1085,4 +1092,4 @@ NameVirtualHost 127.0.0.1:80
 
  重新啟動 Apache 伺服器，就可以了，測試一下吧。
  
- 
+ ```
