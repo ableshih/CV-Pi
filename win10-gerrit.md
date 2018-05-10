@@ -30,12 +30,10 @@ add path
 test java
 cmd
 ```a
-java -version //a
+java -version 
 ```
 
-```Java
-public static void main(String[]args){} //Java
-```
+
 -----------------------------------
 
 2. apache
