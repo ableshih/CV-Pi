@@ -1,10 +1,10 @@
-OA 系統
+#### OA 系統
 
 參照 https://blog.csdn.net/deyili/article/details/79422500
 -----------------------------------
 
 -----------------------------------
-先申請固定 IP
+#### 先申請固定 IP
 
 固定 IP 下來後，申請 DNS
 
@@ -18,7 +18,7 @@ SMTP relay
 
 -----------------------------------
 
-1. java
+#### 1. java
 download
 https://www.java.com/zh_TW/download/windows-64bit.jsp
 
@@ -28,24 +28,15 @@ jre-8u171-windows-x64.exe
 add path
 
 test java
-------
 cmd
-```a
-java -version 
-```
-
-
+'''java -version
 -----------------------------------
 
-2. apache
-----
+#### 2. apache
 download
 https://httpd.apache.org/docs/current/platform/windows.html#down
-
 https://www.apachehaus.com/cgi-bin/download.plx
-
 http://www.apachehaus.com/downloads/httpd-2.4.33-o102o-x64-vc14-r2.zip
-
 httpd-2.4.33-o102o-x64-vc14-r2.zip
 
 add web folder
@@ -53,13 +44,10 @@ add web folder
 unzip to web folder
 -----------------------------------
 
-3. gerrit
-----
+#### 3. gerrit
 download
 https://www.gerritcodereview.com/
-
 https://www.gerritcodereview.com/download/
-
 gerrit-2.15.1.war
 
 rename gerrit-2.15.1.war gerrit.war
@@ -67,8 +55,8 @@ copy to web folder
 
 
 -----------------------------------
-PATH
-----
+#### PATH
+
 D:\ddgit\Apache24\bin
 C:\Program Files\Java\jdk-10.0.1\bin
 
@@ -85,6 +73,8 @@ PATH=D:\ddgit\Apache24\bin;C:\Python27\;C:\Python27\Scripts;C:\Program Files (x8
 
 
 -------------------------------------------
+#### gerrit install
+
 
 Windows PowerShell
 著作權 (C) 2016 Microsoft Corporation. 著作權所有，並保留一切權利。
@@ -195,7 +185,7 @@ PS D:\ddgit\Gerrit>
 
 
 -----------------------------------
-設定檔
+#### gerrit 設定檔
 
 [gerrit]
 	basePath = git
@@ -226,7 +216,7 @@ PS D:\ddgit\Gerrit>
 
 
 -----------------------------------
-
+#### 加到開機後自動啟用 服務
 
 PS D:\ddgit\Gerrit> prunsrv.exe //IS//Gerrit --DisplayName="Gerrit Code Review" --Startup=auto --Jvm="C:\Program Files (
 x86)\Java\jre1.8.0_171\bin\client\jvm.dll" --Classpath=D:\ddgit\GERRIT\bin\gerrit.war --LogPath=D:\ddgit\GERRIT\logs --S
@@ -235,12 +225,13 @@ thod=daemonStart --StopClass=com.google.gerrit.launcher.GerritLauncher --StopMet
 
 
 -----------------------------------
+#### prunsrv 用法
 PS D:\ddgit\Gerrit> prunsrv.exe //DS//Gerrit 
 
 IS install
 DS del
 -----------------------------------
-
+#### gerrit 用法
 
 install
 java -jar .\gerrit-2.15.1.war init
@@ -255,7 +246,7 @@ ctrl + c (exit)
 
 -----------------------------------
 
-
+#### apache 設定檔 
 
 
 
@@ -863,7 +854,7 @@ SSLRandomSeed connect builtin
 
 -----------------------------------
 
-
+#### Eform
 
 
 類別
@@ -957,6 +948,8 @@ Git Gerrit Code Review server (source code 簽核系統)
 -----------------------------------
 
 -----------------------------------
+#### 虛擬網站
+
 port folder
 http://pclevin.blogspot.tw/2016/03/apache-httpd-virtualhost.html
 
