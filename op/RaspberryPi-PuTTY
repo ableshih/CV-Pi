@@ -1,0 +1,19 @@
+查找 pi 的 IP addr 
+
+輸入 IP 到 PuTTY
+
+輸入帳號 pi (預設) 密碼 password 
+
+pi 遙控終端機 貼上是滑鼠右鍵
+
+下一個抓圖指令測試看看
+
+sudo raspistill -o filename.jpg
+
+https://github.com/DeligenceTechnologies/Smile-detection-with-raspberry-pi-using-opencv-and-python
+
+https://www.instructables.com/id/Face-and-Eye-Detection-With-Raspberry-Pi-Zero-and-/
+
+https://www.instructables.com/id/61OpenCV-Installation/
+
+http://www.drmaster.com.tw/Bookinfo.asp?BookID=MP31717#download
