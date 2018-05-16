@@ -140,9 +140,11 @@ https://github.com/git-for-windows/git/releases/download/v2.17.0.windows.1/Git-2
 ```
 cmd
 
-PATH=%PATH%;c:\Program Files\Git\usr\bin
+add PATH c:\Program Files\Git\usr\bin
 
 git
+
+ssh-keygen
 ```
 
 -----------------------------------
