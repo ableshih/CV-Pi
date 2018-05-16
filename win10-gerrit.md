@@ -44,6 +44,15 @@ httpd-2.4.33-o102o-x64-vc14-r2.zip
 add web folder
 
 unzip to web folder
+
+add path
+C:\web\Apache24\bin
+
+cmd
+
+httpd.exe -k install
+
+
 -----------------------------------
 
 #### 3. gerrit
