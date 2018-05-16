@@ -53,6 +53,27 @@ cmd
 httpd.exe -k install
 
 
+
+http://www.apache.org/dist/commons/daemon/binaries/windows/
+
+commons-daemon-1.1.0-bin-windows.zip
+
+unzip
+
+copy *.exe to C:\web\Apache24\bin
+
+
+modify C:\web\Apache24\conf\httpd.conf
+#Define SRVROOT "/Apache24"
+Define SRVROOT "C:/web/Apache24"
+
+start web server
+run C:\web\Apache24\bin\ApacheMonitor.exe
+
+check server
+http://127.0.0.1/
+
+
 -----------------------------------
 
 #### 3. gerrit
