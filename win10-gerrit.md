@@ -139,6 +139,9 @@ https://gitforwindows.org/
 https://github.com/git-for-windows/git/releases/download/v2.17.0.windows.1/Git-2.17.0-64-bit.exe
 ```
 cmd
+
+PATH=%PATH%;c:\Program Files\Git\usr\bin
+
 git
 ```
 
