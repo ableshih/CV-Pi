@@ -99,7 +99,36 @@ run *.msi
 
 select Developer Default
 
+run 
+MySQL -> MySQL Server 8.0 -> MySQL 8.0 Command Line Client
+```
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 14
+Server version: 8.0.11 MySQL Community Server - GPL
 
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE USER 'gerrit'@'localhost' IDENTIFIED BY 'secret';
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> CREATE DATABASE reviewdb DEFAULT CHARACTER SET 'utf8';
+Query OK, 1 row affected, 1 warning (0.03 sec)
+
+mysql> GRANT ALL ON reviewdb.* TO 'gerrit'@'localhost';
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql>
+```
 
 
 -----------------------------------
