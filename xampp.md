@@ -9,10 +9,13 @@
 ### (gerrit 是由 java 所開發其副檔名為 war 安裝時需使用 java 執行)
 ```
 https://www.java.com/zh_TW/
-https://www.java.com/zh_TW/download/windows-64bit.jsp
-http://javadl.oracle.com/webapps/download/AutoDL?BundleId=233172_512cd62ec5174c3487ac17c61aaa89e8
-jre-8u171-windows-x64.exe
+
+只能用 32
+https://java.com/zh_TW/download/manual.jsp
+http://javadl.oracle.com/webapps/download/AutoDL?BundleId=233170_512cd62ec5174c3487ac17c61aaa89e8
+jre-8u171-windows-i586.exe
 ```
+
 ---------------------
 
 # XAMPP install 
@@ -81,6 +84,25 @@ C:\Users\v570\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
 C:\xampp\xampp-control.exe
 ```
+
+### Gerrit
+```
+加到開機後自動啟用 服務
+PS C:\xampp\Gerrit> prunsrv.exe //IS//Gerrit --DisplayName="Gerrit Code Review" --Startup=auto --Jvm="C:\Program Files (
+x86)\Java\jre1.8.0_171\bin\client\jvm.dll" --Classpath=C:\xampp\GERRIT\bin\gerrit.war --LogPath=C:\xampp\GERRIT\logs --S
+tartPath=C:\xampp\GERRIT --StartMode=jvm --StopMode=jvm --StartClass=com.google.gerrit.launcher.GerritLauncher --StartMe
+thod=daemonStart --StopClass=com.google.gerrit.launcher.GerritLauncher --StopMethod=daemonStop
+
+
+
+C:\Program Files\Java\jre1.8.0_171\bin\server
+```
+#### prunsrv.exe (Apache 掛開機啟動的小程式)
+```
+https://www.apache.org/dist/commons/daemon/binaries/windows/
+https://www.apache.org/dist/commons/daemon/binaries/windows/commons-daemon-1.1.0-bin-windows.zip
+```
+##### unzip to Apache C:\xampp\apache\bin
 ---------------------
 # Download Gerrit
 #### https://gerrit-review.googlesource.com/Documentation/install.html#download
