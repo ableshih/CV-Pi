@@ -53,20 +53,26 @@ https://gerrit-review.googlesource.com/Documentation/install.html#installation_o
 ```
 
 
+---------------------
+## xampp start on boot windows
 
-
+### Apache
 ```
-Apache
-
 Run cmd as Administrator
 Go to apache bin direcotry, eg.: C:\xampp\apache\bin
 Run: httpd.exe -k install more info
 Restart comp, or run service manually (from services.msc)
-
-MySQL
-
+```
+### MySQL
+```
 Run cmd as Administrator
 Go to apache bin direcotry, eg.: C:\xampp\mysql\bin
 Run: mysqld.exe --install more info
 Restart comp, or run service manually (from services.msc)
 ```
+## or 建立捷徑
+C:\Users\v570\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+
+
+---------------------
+C:\xampp\xampp-control.exe
