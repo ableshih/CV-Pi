@@ -1,6 +1,7 @@
 ---------------------
 
 # git 
+## 參考 http://nano-chicken.blogspot.tw/2015/05/gerrit.html
 ### (內含 ssh-keygen)
 
 #### https://gitforwindows.org/
