@@ -32,11 +32,18 @@ FLUSH PRIVILEGES;
 ## check data bases
 ```
 http://localhost/phpmyadmin/server_databases.php
+
+資料庫	reviewdb	
+  
+編碼與排序  utf8_general_ci
 ```
 
 ## check user
 ```
 http://localhost/phpmyadmin/server_privileges.php?viewing_mode=server
+
+使用者帳號 'gerrit'@'localhost'
+
 ```
 ---------------------
 # Gerrit Installation on Windows
