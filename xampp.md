@@ -4,7 +4,8 @@
 
 #### https://gitforwindows.org/
 ---------------------
-# java (gerrit 是由 java 所開發其副檔名為 war 安裝時需使用 java 執行)
+# java 
+## (gerrit 是由 java 所開發其副檔名為 war 安裝時需使用 java 執行)
 ```
 https://www.java.com/zh_TW/
 https://www.java.com/zh_TW/download/windows-64bit.jsp
