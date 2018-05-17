@@ -27,7 +27,7 @@ https://www.apachefriends.org/zh_tw/index.html
 http://localhost/phpmyadmin/server_privileges.php?viewing_mode=server
 ```
 ---------------------
-# ADD mysql DATA BASES
+## Database Setup (ADD mysql DATA BASES)
 
 #### https://gerrit-review.googlesource.com/Documentation/install.html#createdb_mysql
 ```
