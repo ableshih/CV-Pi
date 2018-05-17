@@ -101,6 +101,7 @@ https://gerrit-review.googlesource.com/Documentation/install.html#installation_o
 
 
 ## gerrit install
+
 ```
 Windows PowerShell
 著作權 (C) 2016 Microsoft Corporation. 著作權所有，並保留一切權利。
@@ -110,6 +111,9 @@ PS D:\> cd .\ddgit\
 PS D:\ddgit> cd .\Gerrit\
 PS D:\ddgit\Gerrit> java -jar .\gerrit.war init
 ```
+### MySql server 密碼要一樣
+
+
 
 ## gerrit 用法
 ```
