@@ -35,3 +35,8 @@ http://localhost/phpmyadmin/server_databases.php
 http://localhost/phpmyadmin/server_privileges.php?viewing_mode=server
 ```
 ---------------------
+# Gerrit Installation on Windows
+```
+https://gerrit-review.googlesource.com/Documentation/install.html#installation_on_windows
+
+```
