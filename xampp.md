@@ -1,12 +1,12 @@
 ---------------------
 
 # git 
-## (內含 ssh-keygen)
+### (內含 ssh-keygen)
 
 #### https://gitforwindows.org/
 ---------------------
 # java 
-## (gerrit 是由 java 所開發其副檔名為 war 安裝時需使用 java 執行)
+### (gerrit 是由 java 所開發其副檔名為 war 安裝時需使用 java 執行)
 ```
 https://www.java.com/zh_TW/
 https://www.java.com/zh_TW/download/windows-64bit.jsp
@@ -15,7 +15,8 @@ jre-8u171-windows-x64.exe
 ```
 ---------------------
 
-# XAMPP install (Gerrit 需 Apache and Mysql 所以只要安裝 XAMPP 就包含)
+# XAMPP install 
+### (Gerrit 需 Apache and Mysql 所以只要安裝 XAMPP 就包含)
 
 ## download and install
 ```
