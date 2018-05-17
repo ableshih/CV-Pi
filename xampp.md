@@ -73,6 +73,5 @@ Restart comp, or run service manually (from services.msc)
 ## or 建立捷徑
 C:\Users\v570\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
-
----------------------
 C:\xampp\xampp-control.exe
+---------------------
