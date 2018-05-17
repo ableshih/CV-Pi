@@ -51,3 +51,22 @@ http://localhost/phpmyadmin/server_privileges.php?viewing_mode=server
 https://gerrit-review.googlesource.com/Documentation/install.html#installation_on_windows
 
 ```
+
+
+
+
+```
+Apache
+
+Run cmd as Administrator
+Go to apache bin direcotry, eg.: C:\xampp\apache\bin
+Run: httpd.exe -k install more info
+Restart comp, or run service manually (from services.msc)
+
+MySQL
+
+Run cmd as Administrator
+Go to apache bin direcotry, eg.: C:\xampp\mysql\bin
+Run: mysqld.exe --install more info
+Restart comp, or run service manually (from services.msc)
+```
