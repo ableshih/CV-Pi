@@ -79,3 +79,7 @@ C:\Users\v570\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 C:\xampp\xampp-control.exe
 ```
 ---------------------
+# Download Gerrit
+#### https://gerrit-review.googlesource.com/Documentation/install.html#download
+
+#### https://www.gerritcodereview.com/download/gerrit-2.15.1.war
