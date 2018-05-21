@@ -1,0 +1,330 @@
+[gerrit]
+	basePath = /home/git/repositories/ 
+	canonicalWebUrl = http://mcg-git.itwn.intel.com:8080/
+[user] 
+	email = ctstwgerrit@intel.com
+[database]
+	type = mysql
+	database = gerrit
+	hostname = localhost
+	username = git
+[auth]
+	type = LDAP
+[sendemail]
+	enable = true
+	smtpServer = mail.intel.com
+	smtpServerPort = 25
+	smtpUser = cts_tw_gerrit
+	from = Code Review <cts_tw_gerrit@intel.com>
+[container]
+	user = git
+	javaHome = /usr/lib/jdk/jdk1.6.0_37/
+[sshd]
+	listenAddress = *:29418
+[httpd]
+	listenUrl = proxy-http://*:8080/
+[cache]
+	directory = cache
+[gitweb]
+	url = http://mcg-git.itwn.intel.com/gitweb/
+[ldap]      
+	server = ldap://corpadssl.glb.intel.com:3268     
+	username = cn=cts_tw_gerrit,ou=Generic-Account,ou=Resources,dc=gar,dc=corp,dc=intel,dc=com     
+	accountPattern = (sAMAccountName=${username})     
+	accountBase = DC=corp,DC=intel,DC=com     
+	accountSshUserName = ${sAMAccountName}     
+	#accountFullName = displayName     
+	#accountEmailAddress = mail      
+	groupBase = DC=corp,DC=intel,DC=com
+
+https://wenku.baidu.com/view/590d229e172ded630a1cb645.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------
+[gerrit]
+	basePath = git
+	serverId = 822d309b-9f9b-478b-21c7-1ca14f92abcf
+	canonicalWebUrl = http://grt01.test.local:8080/
+[database]
+	type = h2
+	database = /opt/gerrit/db/ReviewDB
+[index]
+	type = LUCENE
+[auth]
+	type = LDAP
+	gitBasicAuthPolicy = HTTP
+[ldap] 
+	server = ldap://ad.test.local
+	username = service@test.local
+	password = 8888888
+	accountBase = DC=test,DC=local
+	#        groupBase = DC=test,DC=local
+	accountPattern = (&(objectClass=person)(sAMAccountName=${username}))
+	accountFullName = displayName
+	accountEmailAddress = mail
+	accountSshUserName = sAMAccountName
+	#        groupMemberPattern = (sAMAccountName=${username})
+	#        groupName = cn
+[receive]
+	enableSignedPush = false
+[sendemail]
+	smtpServer = smtp.test.com
+	smtpServerPort = 25 
+	smtpUser = gerrit@test.com
+	enable=true
+[container]
+	user = gerrit
+	javaHome = /usr/lib/jvm/java-8-openjdk-amd64/jre
+[sshd]
+	listenAddress = *:29418
+[httpd]
+	listenUrl = http://*:8080/
+[cache]
+	directory = cache
+[plugins]
+	# allow install plugin
+	allowRemoteAdmin = true
+http://www.voidcn.com/article/p-oztaxzro-bms.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------
+[gerrit]
+	basePath = git
+	canonicalWebUrl = https://localhost:8080
+[database]
+	type = postgresql
+	hostname = localhost
+	database = reviewdb
+	username = gerrit2
+[auth]
+	type = LDAP
+[ldap]
+	server = ldaps://xx:xx
+	accountBase = xx
+	accountPattern = (&(objectClass=person)(uid=${username}))
+	accountFullName = cn
+	accountEmailAddress = mail
+	accountSshUserName = uid
+	referral = follow
+	groupBase = xx
+	groupScope = one
+[sendemail]
+	smtpServer = localhost
+	from = ${user} [review] <xx@xx.com>
+[container]
+	user = gerrit
+	javaHome = /usr/lib/jvm/java-8-openjdk-amd64/jre
+[sshd]
+	listenAddress = *:29418
+[download]
+	scheme = ssh
+	scheme = http
+[httpd]
+	listenUrl = proxy-http://localhost:8080
+[cache]
+	directory = cache
+[http]
+	proxy = http://xx:xx
+[gitweb]
+	cgi = /usr/lib/cgi-bin/gitweb.cgi
+[cache "web_sessions"]
+	maxAge = 1 month
+	   
+https://blog.csdn.net/allhaillouis/article/details/46374959
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------
+[gerrit]
+	basePath = git
+	serverId = 822d309b-9f9b-478b-21c7-1ca14f92abcf
+	canonicalWebUrl = http://grt01.test.local:8080/
+[database]
+	type = h2
+	database = /opt/gerrit/db/ReviewDB
+[index]
+	type = LUCENE
+[auth]
+	type = LDAP
+	gitBasicAuthPolicy = HTTP
+[ldap] 
+	server = ldap://ad.test.local
+	username = service@test.local
+	password = 8888888
+	accountBase = DC=test,DC=local
+	#        groupBase = DC=test,DC=local
+	accountPattern = (&(objectClass=person)(sAMAccountName=${username}))
+	accountFullName = displayName
+	accountEmailAddress = mail
+	accountSshUserName = sAMAccountName
+	#        groupMemberPattern = (sAMAccountName=${username})
+	#        groupName = cn
+[receive]
+	enableSignedPush = false
+[sendemail]
+	smtpServer = smtp.test.com
+	smtpServerPort = 25 
+	smtpUser = gerrit@test.com
+	enable=true
+[container]
+	user = gerrit
+	javaHome = /usr/lib/jvm/java-8-openjdk-amd64/jre
+[sshd]
+	listenAddress = *:29418
+[httpd]
+	listenUrl = http://*:8080/
+[cache]
+	directory = cache
+[plugins]
+	# allow install plugin
+	allowRemoteAdmin = true
+		
+http://www.dongcoder.com/detail-613018.html
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------
+[gerrit]
+　　basePath = git
+　　canonicalWebUrl = http://ip.ip.ip.ip:8080/
+[database]
+　　type = MYSQL
+　　hostname = localhost
+　　database = reviewdb
+　　username = gerrit
+[auth]
+　　type = LDAP
+　　emailFormat = {0}@example.com
+[ldap]
+　　server = ldap://ip.ip.ip.ip
+　　username = 公司網域\\公司AD帳號
+　　accountBase = OU=xxx,OU=xxx,DC=example,DC=com
+　　accountPattern = (&(objectClass=person)(sAMAccountName=${username}))
+　　accountFullName = displayName
+　　accountEmailAddress = ${mail.toLowerCase}
+　　accountMemberField = memberOf
+　　referral = follow
+　　groupBase = OU=xxx,OU=xxx,DC=example,DC=com
+　　groupPattern = (&(objectClass=group)(cn=${groupname}))
+[sendemail]
+　　smtpServer = localhost
+[container]
+　　user = gerrit_test
+　　javaHome = /usr/lib/jvm/java-6-sun-1.6.0.26/jre
+[sshd]
+　　listenAddress = *:29418
+[httpd]
+　　listenUrl = http://*:8080/
+[cache]
+　　directory = cache
+
+
+
+http://qnworknote.blogspot.tw/2013/07/linux-gerrit-ldap-auth_31.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------
+由於gtt配置ldap的時候認為用戶名應該是cn屬性，所以需要修改accountPattern和accountSshUserName屬性：
+
+[ldap]
+	server = ldap://localhost
+	accountBase = ou=people,dc=gaott,dc=info
+	accountPattern = (&(objectClass=person)(cn=${username}))
+	accountSshUserName = cn
+	groupBase = ou=group,dc=gaott,dc=info
+		
