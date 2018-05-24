@@ -1,3 +1,16 @@
+
+http://blog.kent-chiu.com/2012/01/05/install_git_server_on_windows.html
+
+
+
+
+
+
+
+
+
+
+
 http://sam0512.blogspot.tw/2013/06/windowsgit-server.html
 
 
