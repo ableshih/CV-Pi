@@ -1,4 +1,6 @@
 
+http://jdev.tw/blog/3347/using-owncloud-to-build-dropbox-like-website
+
 
 
 IIS 憑證轉移到 Apache
