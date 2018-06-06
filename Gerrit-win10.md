@@ -34,30 +34,43 @@
 
 ## java
 https://www.java.com/zh_TW/download/windows-64bit.jsp
+
 x64 C:\Program Files\Java\jre1.8.0_171\bin\server\jvm.dll
+
 x32 C:\Program Files (x86)\Java\jre1.8.0_171\bin\client\jvm.dll
 ```cmd -> java -version```
 
 ## git
 https://git-scm.com/download/win
+
 https://github.com/git-for-windows/git/releases/download/v2.17.1.windows.2/Git-2.17.1.2-64-bit.exe
 
 ## TortoiseGit
 https://tortoisegit.org/download/
+
 https://download.tortoisegit.org/tgit/2.6.0.0/TortoiseGit-2.6.0.0-64bit.msi
 
 ===========
 
 ## 選用 XAMPP (使用 XAMPP 可一次架好 Apache Mysql phpMyAdmin )
 https://www.apachefriends.org/download.html
+
 xampp-win32-7.2.5-0-VC15-installer.exe
 
 ===========
+## MySQL 建資料庫
+```
+  mysql
 
-
+  CREATE USER 'gerrit'@'localhost' IDENTIFIED BY 'secret';
+  CREATE DATABASE reviewdb DEFAULT CHARACTER SET 'utf8';
+  GRANT ALL ON reviewdb.* TO 'gerrit'@'localhost';
+  FLUSH PRIVILEGES;
+```
 
 # gerrit 用法
 https://www.gerritcodereview.com/
+
 https://www.gerritcodereview.com/download/gerrit-2.15.2.war
 
 ## install
@@ -68,6 +81,12 @@ java -jar .\gerrit-2.15.1.war init
 ```
 java -jar .\bin\gerrit.war daemon --console-log
 ```
+
+## 安裝說明
+https://gerrit-documentation.storage.googleapis.com/Documentation/2.15.2/install.html
+
+https://gerrit-documentation.storage.googleapis.com/Documentation/2.15.2/install.html#installation_on_windows
+
 ===========
 
 ## 開 proxy
