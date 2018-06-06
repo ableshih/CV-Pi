@@ -33,20 +33,33 @@
 ===========
 
 ## java
+https://www.java.com/zh_TW/download/windows-64bit.jsp
+x64 C:\Program Files\Java\jre1.8.0_171\bin\server\jvm.dll
+x32 C:\Program Files (x86)\Java\jre1.8.0_171\bin\client\jvm.dll
+```cmd -> java -version```
 
 ## git
+https://git-scm.com/download/win
+https://github.com/git-for-windows/git/releases/download/v2.17.1.windows.2/Git-2.17.1.2-64-bit.exe
 
 ## TortoiseGit
+https://tortoisegit.org/download/
+https://download.tortoisegit.org/tgit/2.6.0.0/TortoiseGit-2.6.0.0-64bit.msi
 
 ===========
 
-## 選用 XAMPP (使用 XAMPP 可一次架好 Apache Mysql phpadmin，)
+## 選用 XAMPP (使用 XAMPP 可一次架好 Apache Mysql phpMyAdmin )
+https://www.apachefriends.org/download.html
+xampp-win32-7.2.5-0-VC15-installer.exe
 
 ===========
 
 
 
 # gerrit 用法
+https://www.gerritcodereview.com/
+https://www.gerritcodereview.com/download/gerrit-2.15.2.war
+
 ## install
 ```
 java -jar .\gerrit-2.15.1.war init
@@ -83,6 +96,13 @@ PS D:\ddgit\Gerrit> prunsrv.exe //DS//Gerrit
 IS install
 DS del
 ```
+
+## 另一方法
+建捷徑 copy 到啟動
+win+R
+```shell:Common Startup```
+C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup
+
 ===========
 
 
