@@ -4,7 +4,8 @@
 ---------------------------------------------------
 ## OA 桌機
 
-## 查出 mac addr 
+## 查出 mac addr
+
 ```cmd -> ipconfig/all ```
 
 ## 申請 固定 IP
@@ -38,6 +39,7 @@ https://www.java.com/zh_TW/download/windows-64bit.jsp
 x64 C:\Program Files\Java\jre1.8.0_171\bin\server\jvm.dll
 
 x32 C:\Program Files (x86)\Java\jre1.8.0_171\bin\client\jvm.dll
+
 ```cmd -> java -version```
 
 ## git
@@ -53,6 +55,7 @@ https://download.tortoisegit.org/tgit/2.6.0.0/TortoiseGit-2.6.0.0-64bit.msi
 ===========
 
 ## 選用 XAMPP (使用 XAMPP 可一次架好 Apache Mysql phpMyAdmin )
+
 https://www.apachefriends.org/download.html
 
 xampp-win32-7.2.5-0-VC15-installer.exe
@@ -118,8 +121,11 @@ DS del
 
 ## 另一方法
 建捷徑 copy 到啟動
+
 win+R
+
 ```shell:Common Startup```
+
 C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup
 
 ===========
