@@ -201,15 +201,18 @@ sudo apt-get install exuberant-ctags
 
 # 如何在linux（ubuntu）下安裝source insight
 安裝wine
-```wine ~/Desktop/Si35Setup.exe
+```
+wine ~/Desktop/Si35Setup.exe
 ```
 
 啟動source insight建立工程
-```wine "c:\Program Files\Source Insight 3\Insight3.exe"
+```
+wine "c:\Program Files\Source Insight 3\Insight3.exe"
 ```
 
 編寫一個簡單的腳本方便每次啟動source insight
-```!/bin/bash
+```
+!/bin/bash
 wine "c:\Program Files\Source Insight 3\Insight3.exe" &
 ```
 
