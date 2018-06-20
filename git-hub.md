@@ -183,10 +183,21 @@ git commit -am "cdcd"
 git push -u origin master
 ```
 
+# Source Insight與github的使用
+uft8有正面的支持，其默認編碼方式為ANSI碼
+
+# source-insight-vim
+(https://github.com/kiddlu/Source-Insight-config)
 
 
+# 將vim打造成source insight
 
-
+ctags
+```
+sudo apt-get install ctags
+or
+sudo apt-get install exuberant-ctags
+```
 
 
 
