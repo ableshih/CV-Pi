@@ -1,0 +1,73 @@
+https://www.udemy.com/sublime-text3/
+https://www.wfublog.com/2017/08/emmet-sublime-text.html
+
+http://www.sublimetext.com
+
+-------------------------------
+install package
+https://packagecontrol.io/installation
+copy 內容
+view -> show console -> 貼上
+關閉重開
+
+check insatll
+tools -> command palette (ctrl + shift + p)
+-------------------------------
+emmet ConvertToUTF8
+ctrl + shift + p
+key in install pakage 選到 enter
+key in emmet 選到進行安裝
+
+ctrl + shift + p
+key in install pakage 選到 enter
+key in ConvertToUTF8 選到進行安裝
+-------------------------------
+html
+縮放 ctrl + 滑鼠滾輪(+ or -)
+
+html:5 + tab key (自動建碼)
+! + tab key (自動建碼)
+h1 + tab key (自動標籤建碼)
+p 內文
+ul 清單
+li 清單項目
+a 超連結
+img 圖片
+
+-------------------------------
+頁籤 空白點兩下(建新檔)
+
+div.wrapper
+div#wrapper
+#wrapper
+#header
+#menu
+#content
+#footer
+nav#menu
+.wrapper
+
+-------------------------------
+(ctrl + shift + p)
+
+key in html 選 Set Syntax:HTML (就能把檔案設成 html)
+
+-------------------------------
+
+ul>li>a tab key
+
+<ul>
+	<li><a href=""></a></li>
+</ul>
+
+ul>li*10>a
+
+table>tr*10>td*6 tab key
+
+h1+p tab key
+
+ul.products-list>li*10>a>h2+span tab key
+
+
+
+
