@@ -5,7 +5,7 @@
 # 在用 小畫家 去除不要的色塊
 # 轉檔成svg https://picsvg.com/ Filters 選 Ready#3
 # 到 匯入svg https://www.tinkercad.com 比例 選 10% (太大會當機)
-
+超難用 又會淚格 https://pixlr.com
 
 40mm長
 55mm寬
