@@ -1,0 +1,15 @@
+input.onGesture(Gesture.Shake, () => {
+    radio.sendString("hello microbit")
+})
+radio.onDataPacketReceived( ({ receivedString }) =>  {
+    basic.showNumber(receivedString.length)
+    basic.pause(500)
+    basic.showString(receivedString)
+})
+input.onButtonPressed(Button.A, () => {
+    radio.sendString("A")
+})
+input.onButtonPressed(Button.B, () => {
+    radio.sendString("B")
+})
+radio.setGroup(1)
