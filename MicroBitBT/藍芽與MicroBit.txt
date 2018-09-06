@@ -11,6 +11,8 @@ Connect -> 選 bit (這時 bit 的名義要為 "BBC micro:bit" 才是可以連�
 就可用手機控制
 
 
+PS:重燒code 就要重新配對
+
 micro:bit Numeric (GooglePlay APP)
 ==========================================================
 https://play.google.com/store/apps/details?id=com.ble.microbit.numeric&hl=zh_TW
