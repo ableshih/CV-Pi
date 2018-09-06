@@ -1,0 +1,32 @@
+let str = ""
+let connected = 0
+input.onButtonPressed(Button.A, () => {
+    if (connected) {
+        bluetooth.uartWriteString("A")
+    }
+})
+bluetooth.onBluetoothConnected(() => {
+    connected = 1
+})
+bluetooth.onBluetoothDisconnected(() => {
+    connected = 0
+})
+bluetooth.startUartService()
+basic.forever(() => {
+    if (connected == 1) {
+        str = bluetooth.uartReadUntil(serial.delimiters(Delimiters.NewLine))
+        if (str == "B") {
+            basic.showString("Hi")
+        } else {
+            basic.showString(str)
+        }
+    } else {
+        basic.showLeds(`
+            . . . . .
+            . # . # .
+            . . . . .
+            # . . . #
+            . # . # .
+            `)
+    }
+})
