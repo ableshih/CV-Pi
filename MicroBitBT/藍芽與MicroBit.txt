@@ -12,6 +12,8 @@ Connect -> 選 bit (這時 bit 的名義要為 "BBC micro:bit" 才是可以連�
 
 
 PS:重燒code 就要重新配對
+目前，經由 USB 傳輸線刷新程式，會導致 micro:bit 上的藍牙配對資料遺失。 因此，如果用 USB 線來刷新代碼到你的 micro:bit 後，你就需要再次配對。
+https://makecode.microbit.org/reference/bluetooth/bluetooth-pairing
 
 micro:bit Numeric (GooglePlay APP)
 ==========================================================
