@@ -1,4 +1,4 @@
-
+```
 http://www.ladyada.net/learn/avr/avrdude.html
 https://www.youtube.com/watch?v=Jw-ZSkzd-uY
 
@@ -232,7 +232,7 @@ Arduino IDE 改 code 並燒入 使 fw 變動
 :r = read
 :filename.hex:i
 
-
+```
 
 
 
