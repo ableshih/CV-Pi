@@ -1,0 +1,73 @@
+CR-10 Bootloader Flashing Guide - Marlin Firmware
+
+UNO
+
+接線
+=========================
+CR-10 板子上的 ICSP port
+UNO 板子上的 ICSP port
+一對一相接除 CR-10 reset 要改接 UNO pin10
+
+UNO 設定
+=========================
+Arduino IDE
+File\Examples\11.ArduinoISP\ArduinoISP
+Tools\Boards\Arduino/Genuion UNO
+Tools\Port\選到對的port
+編譯上傳(燒好之後UNO就成了一台燒錄器)
+
+CR-10 是自定義板子
+=========================
+Arduino IDE
+File\Preferences
+Additional Boards Manager URLs: 
+貼上下連結
+https://raw.githubusercontent.com/Lauszus/Sanguino/master/package_lauszus_sanguino_index.json
+按OK
+
+Arduino IDE
+Tools\Boards Manager\
+輸入 sanguino
+找到 點選 Install
+
+重選板子
+Arduino IDE
+Tools\Boards\sanguino
+
+重選處理器
+Arduino IDE
+Tools\Processor\ATmega1284 or ATmega1284P(16 MHz)
+
+選到對的 COMport
+
+Arduino IDE
+Tools\Burn Bootloader
+
+拔 ICSP 線
+
+USB 改接回 CR-10
+
+用 Arduino IDE 開啟 Marlin Firmware 
+編譯 *.hex
+
+avrdude app
+檔案下載點
+http://blog.zakkemble.net/avrdudess-a-gui-for-avrdude/
+http://blog.zakkemble.net/download/setup-AVRDUDESS-2.6.exe
+
+用 AVRDUDESS
+
+1. 於 Programmer (選擇 Arduino)
+2. COMport 選到對的 
+3. Baud rate 115200
+2. 於 MCU (按一下 Detect [自動偵測被燒板子IC型號])
+3. 於 Flash (選擇燒錄檔 *.hex)
+4. 於 Flash (按 Go 進行燒錄)
+
+
+=========================
+
+
+=========================
+
+=========================
