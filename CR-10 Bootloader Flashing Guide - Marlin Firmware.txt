@@ -1,3 +1,4 @@
+```
 CR-10 Bootloader Flashing Guide - Marlin Firmware
 
 UNO
@@ -71,3 +72,4 @@ http://blog.zakkemble.net/download/setup-AVRDUDESS-2.6.exe
 =========================
 
 =========================
+```
