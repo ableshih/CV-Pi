@@ -1,0 +1,56 @@
+檔案下載點
+http://blog.zakkemble.net/avrdudess-a-gui-for-avrdude/
+
+參考資料
+http://gsyan888.blogspot.com/2015/09/arduno-programming-through-icsp.html
+https://www.instructables.com/id/Easy-Technique-for-Bootloading-Atmega328pu-and-Atm/
+https://www.arduino.cc/en/Tutorial/ArduinoISP
+
+
+步驟
+將 Arduino UNO 和 MKS Base V1.3(MEGA 2560)的 ICSP 連接
+
+UNO D13 ←→ Mega 2560 ICSP SCK (pin 3)
+UNO D12 ←→ Mega 2560 ICSP MISO (pin 1)
+UNO D11 ←→ Mega 2560 ICSP MOSI (pin 4)
+UNO D10 ←→ Mega 2560 ICSP REST (pin 5)
+UNO 5V ←→ Mega 2560 ICSP +5V (pin 2)
+UNO GND ←→ Mega 2560 ICSP GND (pin 6)
+
+
+
+確認接線無誤以後，將 Arduino UNO 以 USB 線與電腦連線(Mega 2560不需另外插電)。執行 Arduino IDE ，利用主選單「File」中的「Example」，將「ArduinoISP」的範例程式開啟。
+
+
+設定好當「Master端」的 UNO，將「ArduinoISP」的靭體編譯好，並上載至UNO中：
+
+
+當 UNO 己寫入 ArdunoISP 的靭體以後，我們就將它變成一個燒錄器了。
+=====================================================================
+方法一
+
+用 AVRDUDESS
+
+1. 於 Programmer (選擇 Arduino [UNO])
+2. 於 MCU (按一下 Detect [自動偵測被燒板子IC型號])
+3. 於 Flash (選擇燒錄檔 *.hex)
+4. 於 Flash (按 Go 進行燒錄)
+
+
+
+=====================================================================
+方法二
+
+可以打開要寫入 Slave 端的程式了。
+
+我們將板子的類型換成 Slave 端的類型，本例中的 MKS Base V1.3 用的單晶片是 Mega 2560，所以由主選單「Tools」中選「Arduino Mega 2560 or Mega ADK」。
+
+接著指定寫靭體時的「Programming」，由主選單「Tools」中的「Programming」選取「Arduno as ISP」：
+
+經前面的設定後，確認已開啟我們要寫入「MKS Base V1.3 」的靭體──「Marlin」後，準備要編譯及上載囉！
+
+不過，別太衝動，和平常直接按「Upload」不同，這次要由主選單「File」中的「Upload using Programmer」來進行上載靭體的工作：
+
+如果選了「Upload using Programmer」，當Master 端的 Ardunio UNO 會幫我們將編譯好的靭體寫入 Slave 端的「MKS Base V1.3 」中。
+
+新靭體上載完畢後，就可以將當 ISP 的 Arduino UNO 拆除，把 「MKS Base V1.3 」重新插上 USB 線測試囉！還好 3D printer 的 Marlin 不用常常重新上載，不然，為了更新靭體，拆拆裝裝，也是滿煩人的。
