@@ -1,0 +1,61 @@
+=============================================================================
+NANO issue
+
+當編譯上傳出現時 [An error occurred while uploading the sketch] 停留在 Uploading (會卡很久，除非拔掉 USB 才能停止)
+最終出現訊息無法燒錄
+問題是在硬體不同
+解決方式為 
+
+新版本硬體
+Tools->Processor->ATmega328P
+舊版本硬體
+Tools->Processor->ATmega328P(Old Bootloader)
+=============================================================================
+
+Arduino: 1.8.7 (Windows 10), Board: "Arduino Nano, ATmega328P"
+
+Sketch uses 7904 bytes (25%) of program storage space. Maximum is 30720 bytes.
+Global variables use 671 bytes (32%) of dynamic memory, leaving 1377 bytes for local variables. Maximum is 2048 bytes.
+avrdude: stk500_getsync() attempt 1 of 10: not in sync: resp=0x00
+avrdude: stk500_getsync() attempt 2 of 10: not in sync: resp=0x00
+avrdude: stk500_getsync() attempt 3 of 10: not in sync: resp=0x00
+avrdude: stk500_getsync() attempt 4 of 10: not in sync: resp=0x00
+avrdude: stk500_getsync() attempt 5 of 10: not in sync: resp=0x00
+avrdude: stk500_getsync() attempt 6 of 10: not in sync: resp=0x00
+avrdude: stk500_getsync() attempt 7 of 10: not in sync: resp=0x00
+avrdude: stk500_getsync() attempt 8 of 10: not in sync: resp=0x00
+avrdude: stk500_getsync() attempt 9 of 10: not in sync: resp=0x00
+avrdude: stk500_getsync() attempt 10 of 10: not in sync: resp=0x00
+An error occurred while uploading the sketch
+
+This report would have more information with
+"Show verbose output during compilation"
+option enabled in File -> Preferences.
+
+=============================================================================
+舊版本硬體
+=============================================================================
+         Overriding Baud Rate          : 57600
+
+         Programmer Type : Arduino
+         Description     : Arduino
+         Hardware Version: 2
+         Firmware Version: 1.16
+         Vtarget         : 0.0 V
+         Varef           : 0.0 V
+         Oscillator      : Off
+         SCK period      : 0.1 us
+
+=============================================================================
+新版本硬體
+=============================================================================
+         Overriding Baud Rate          : 115200
+
+         Programmer Type : Arduino
+         Description     : Arduino
+         Hardware Version: 3
+         Firmware Version: 4.4
+         Vtarget         : 0.3 V
+         Varef           : 0.3 V
+         Oscillator      : 28.800 kHz
+         SCK period      : 3.3 us
