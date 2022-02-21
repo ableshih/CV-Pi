@@ -1,0 +1,179 @@
+https://chromeenterprise.google/os/chromeosflex/
+
+https://www.3cblog.idv.tw/2020/12/Raspberry-Pi-4-EP10-Chrome-OS-Chromium-20201211.html?m=1
+
+https://www.youtube.com/watch?v=gK8qQ5OkzRY
+
+-------------------------------
+1. download img
+===============================
+下載ChromiumOS - Raspberry Pi 4版本：
+https://github.com/FydeOS/chromium_os-raspberry_pi/releases
+
+
+https://github.com/FydeOS/chromium_os-raspberry_pi/releases/download/r92-r2/chromiumos_image_r92r2-rpi4b.img.xz
+-------------------------------
+img to SD
+===============================
+https://www.balena.io/etcher/
+
+https://github.com/balena-io/etcher/releases/download/v1.7.3/balenaEtcher-Portable-1.7.3.exe?d_id=1a3b32cc-e76b-4571-99fb-5da0c1ecbe9fR
+
+https://github.com/balena-io/etcher/releases/download/v1.7.3/balenaEtcher-Portable-1.7.3.exe
+balenaEtcher-Portable-1.7.3.exe
+
+-------------------------------
+modify config.txt
+===============================
+config.txt
+
+disable_overscan=1
+dtparam=audio=on
+
+dtoverlay=vc4-fkms-v3d
+
+force_turbo=1
+
+arm_64bit=1
+max_framebuffers=2
+
+v3d_freq=800
+over_voltage=11
+arm_freq=2000
+-------------------------------
+SD to pi
+===============================
+
+in to pi
+
+-------------------------------
+boot OS init
+===============================
+
+
+
+-------------------------------
+釋放SD 空間
+===============================
+釋放SD卡指令：
+Ctrl+Alt+T 
+打開Crosh
+輸入 shell
+輸入 sudo expand-partition.sh --dst /dev/mmcblk0p1
+
+-------------------------------
+on Linux
+===============================
+
+
+-------------------------------
+工具
+===============================
+Google 輸入工具
+https://chrome.google.com/webstore/detail/google-input-tools/mclkkofklkfljcocdinagocijmpgbhab?hl=zh-TW
+安全殼層
+https://chrome.google.com/webstore/detail/secure-shell/iodihamcpbpeioajjeobimgagajmlibd?hl=zh-TW
+Crosh Windows
+https://chrome.google.com/webstore/detail/crosh-window/nhbmpbdladcchdhkemlojfjdknjadhmh?hl=zh-TW
+影片中提到的指令如下(每次複製一行，按右鍵貼上，再按下 Enter 送出)：
+
+shell
+
+sudo mount /dev/mmcblk0p12 /mnt
+
+sudo cp /mnt/cmdline.txt /mnt/cmdline.txt.org
+
+sudo vi /mnt/cmdline.txt
+
+清空後要輸入的文字內容：
+coherent_pool=6M smsc95xx.turbo_mode=N dwc_otg.lpm_enable=0 console=serial0,115200 earlyprintk=serial0,115200 log_level=7 root=/dev/mmcblk0p3 rootfstype=ext2 rootwait ro cros_debug cros_secure elevator=deadline snd_bcm2835.enable_compat_alsa=1
+
+最後一行指令：
+
+sudo reboot
+
+-------------------------------
+
+===============================
+
+
+-------------------------------
+
+===============================
+
+
+https://chrome.google.com/webstore/detail/crosh-window/nhbmpbdladcchdhkemlojfjdknjadhmh?hl=zh-TW
+
+https://chrome.google.com/webstore/detail/google-input-tools/mclkkofklkfljcocdinagocijmpgbhab?hl=zh-TW
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Chromium OS for Raspberry Pi
+# Copyright (c) 2021 Fyde Innovations. All rights reserved.
+#
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+#
+# The Raspberry Pi uses a configuration file instead of the BIOS you would expect
+# to find on a conventional PC. The system configuration parameters, which would
+# traditionally be edited and stored using a BIOS, are stored instead in this
+# optional text file. This is read by the GPU before the ARM CPU and Linux 
+# are initialised.
+# 
+# For more info: 
+# https://www.raspberrypi.com/documentation/computers/config_txt.html
+
+
+hdmi_drive=2
+#config_hdmi_boost=7
+disable_overscan=1
+dtparam=audio=on
+cma_lwm=16
+cma_hwm=32
+gpu_mem=256
+
+arm_64bit=1
+max_framebuffers=2
+kernel=kernel8_a.img
+disable_splash=1
+
+
+# Display mode
+# Defaulting to "kms" mode for better graphics performance, it requires an optional flag
+# "fydeos-force-cursor-compositing" in /etc/chrome_dev.conf
+# Should you run into display issues, such as black-screen or GUI graphics not being able
+# to render properly, you can toggle the display mode to "fkms" to enable a compatibility
+# mode, by commenting/uncommenting the corresponding lines.
+#dtoverlay=vc4-kms-v3d
+#dtoverlay=vc4-fkms-v3d
+
+
+# Uncomment the following lines to enable overclocking 
+#over_voltage=8
+#arm_freq=2147
+
+
+#disable_overscan=1
+#dtparam=audio=on
+
+dtoverlay=vc4-fkms-v3d
+
+force_turbo=1
+
+#arm_64bit=1
+#max_framebuffers=2
+
+v3d_freq=800
+over_voltage=11
+arm_freq=2000
